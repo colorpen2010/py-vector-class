@@ -5,9 +5,9 @@ from numbers import Real
 
 
 class Vector:
-    def __init__(self, x: Real, y: Real) -> None:
-        self.x = round(x, 2)
-        self.y = round(y, 2)
+    def __init__(self, x_coordinate: Real, y_coordinate: Real) -> None:
+        self.x = round(x_coordinate, 2)
+        self.y = round(y_coordinate, 2)
 
     def __add__(self, other: "Vector") -> "Vector":
         if not isinstance(other, Vector):
@@ -30,7 +30,10 @@ class Vector:
     def create_vector_by_two_points(
         cls, start_point: tuple[Real, Real], end_point: tuple[Real, Real]
     ) -> "Vector":
-        return cls(end_point[0] - start_point[0], end_point[1] - start_point[1])
+        return cls(
+            end_point[0] - start_point[0],
+            end_point[1] - start_point[1],
+        )
 
     def get_length(self) -> float:
         return math.hypot(self.x, self.y)
